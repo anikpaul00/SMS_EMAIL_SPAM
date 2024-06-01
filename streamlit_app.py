@@ -82,8 +82,8 @@ with tab_sms:
     st.subheader("SMS Spam Detection")
     input_sms = st.text_input('Enter the SMS')
     if st.button('Predict Spam SMS'):
-        if len(input_sms.split()) < 6:
-            st.error("The SMS should contain at least 6 words.")
+        if len(input_sms.split()) < 5:
+            st.error("The SMS should contain at least 5 words.")
         else:
             transform_sms = transform_text(input_sms)
             vector_input = spam_tfidf.transform([transform_sms])
