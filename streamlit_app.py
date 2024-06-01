@@ -16,7 +16,7 @@ nltk.download('stopwords')
 
 ps = PorterStemmer()
 
-image_path = os.path.join('SMS-Email-spam-classifier-main', 'me2.png')
+image_path = os.path.join('me2.png')
 image = Image.open(image_path)
 st.image(image, caption='Spam Classifier')
 
@@ -28,8 +28,8 @@ def transform_text(text):
     text = [ps.stem(i) for i in text]
     return " ".join(text)
 
-spam_vectorizer_path = os.path.join('SMS-Email-spam-classifier-main', 'vectorizer.pkl')
-spam_model_path = os.path.join('SMS-Email-spam-classifier-main', 'model.pkl')
+spam_vectorizer_path = os.path.join('vectorizer.pkl')
+spam_model_path = os.path.join('model.pkl')
 
 with open(spam_vectorizer_path, 'rb') as f:
     spam_tfidf = pickle.load(f)
@@ -40,8 +40,8 @@ with open(spam_model_path, 'rb') as f:
 if not isinstance(spam_tfidf, TfidfVectorizer):
     raise ValueError("The loaded vectorizer is not a TfidfVectorizer instance")
 
-email_model_path = 'SMS-Email-spam-classifier-main/my_model.h5'
-tokenizer_path = 'SMS-Email-spam-classifier-main/tokenizer.pkl'
+email_model_path = 'my_model.h5'
+tokenizer_path = 'tokenizer.pkl'
 
 if not os.path.exists(email_model_path):
     st.error(f"Model file not found at {email_model_path}")
